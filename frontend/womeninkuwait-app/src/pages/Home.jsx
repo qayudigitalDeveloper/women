@@ -2,9 +2,10 @@
 import { Link } from 'react-router-dom';
 import '../Home.css';
 import React, { useState, useEffect, useCallback } from 'react';
-import connectImage from '../assets/4.jpg'; 
+import connectImage from '../assets/4.jpg';
 import heroImage from '../assets/main.png';
 import visionImage from '../assets/7.jpg';
+import WomenKuwaitVideo from '../assets/WomenKuwaitVideo.mp4'
 
 
 const pressQuotes = [
@@ -32,7 +33,7 @@ const Home = () => {
   const prevSlide = () => {
     setCurrentSlide(current => (current === 0 ? pressQuotes.length - 1 : current - 1));
   };
-  
+
   const goToSlide = (index) => {
     setCurrentSlide(index);
   }
@@ -50,8 +51,8 @@ const Home = () => {
         <img src={heroImage} alt="Inspiring women connecting at a Women in Kuwait event" className="hero-image" />
         <div className="hero-content">
           <h1 className="hero-title">
-             Women circle for connections in 
-           
+            Women circle for connections in
+
             <span className="title-accent"> Kuwait</span>
           </h1>
           <div className="hero-footer">
@@ -70,24 +71,30 @@ const Home = () => {
       <section className="ambition-section">
         <div className="ambition-content">
           <div className="video-placeholder">
-            <div className="video-overlay">
+             <video
+                src={WomenKuwaitVideo}
+                controls
+                className="video-overlay"
+                style={{width: "100%"}}
+              >
               <svg
                 className="play-icon"
-                xmlns="http://www.w3.org/2000/svg"
+                xmlns={WomenKuwaitVideo}
                 viewBox="0 0 24 24"
                 fill="currentColor"
               >
                 <path d="M8 5v14l11-7z" />
               </svg>
-              <p>Watch Our Story</p>
-            </div>
+             <p>Watch Our Story</p>
+              </video>
+              
           </div>
           <div className="ambition-text">
-            
-              <span className="ambition-title-accent">Who are whe?</span>
-            
+
+            <span className="ambition-title-accent">Who are whe?</span>
+
             <p className="ambition-description">
-              After two decades in Kuwait, Maimuna realized that while women have been achieving incredible things in Kuwait, there wasn’t a community where they could consistently meet.<br /><br/> Women Kuwait exists for women who crave real connection. 
+              After two decades in Kuwait, Maimuna realized that while women have been achieving incredible things in Kuwait, there wasn’t a community where they could consistently meet.<br /><br /> Women Kuwait exists for women who crave real connection.
               Step away from surface-level networking and into a world of fun parties and lifelong friendships.
             </p>
             <Link to="/about-us" className="cta-button">
@@ -122,18 +129,20 @@ const Home = () => {
               <p className="stat-number">1.2%</p>
               <p className="stat-label">MENA VC funding went to women-led startups</p>
             </div>
-            
+
           </div>
           <div className="stats-point">
             <h4>Kuwaiti women are ready, Let's work together!!</h4>
           </div>
-          
+
         </div>
       </section>
 
       {/* --- EVENTS SECTION --- */}
       <section className="events-section">
         <div className="events-content">
+
+          {/* Left side: Info & image */}
           <div className="events-info-left">
             <div className="events-info-text-content">
               <h3 className="events-info-title">Join the Sisterhood</h3>
@@ -143,55 +152,45 @@ const Home = () => {
               </p>
               <Link to="/join" className="events-info-link">
                 <span>Become a Member</span>
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M16.175 12.9167L12.4333 16.6584L13.5 17.725L19 12.225L13.5 6.725L12.4333 7.79167L16.175 11.5333H5V12.9167H16.175Z"
-                    fill="currentColor"
-                  />
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M16.175 12.9167L12.4333 16.6584L13.5 17.725L19 12.225L13.5 6.725L12.4333 7.79167L16.175 11.5333H5V12.9167H16.175Z" fill="currentColor" />
                 </svg>
               </Link>
             </div>
-            {/* The image is placed here */}
-            <img 
-              src={connectImage} 
-              alt="A group of professional women in Kuwait" 
-              className="events-info-image" 
-              />
-            
+
+            {/* Left image */}
+            <img
+              src={connectImage}
+              alt="A group of professional women in Kuwait"
+              className="events-info-image"
+            />
           </div>
+
+          {/* Right side: Upcoming events */}
           <div className="events-main-right">
             <div className="events-bg-lines"></div>
-            <h2 className="events-main-title">
-              Upcoming Events
-            </h2>
-            <Link to="/events" className="events-cta-button">
-              See All Events
-            </Link>
+            <h2 className="events-main-title">Upcoming Events</h2>
+            <Link to="/events" className="events-cta-button">See All Events</Link>
           </div>
+
         </div>
       </section>
 
       {/* ---  VISION SECTION --- */}
       <section className="vision-section">
         <div className="vision-content">
-            <div className="vision-image">
-                <img src={visionImage} alt="A woman with pink hair, representing the vibrant Wom(en) Kuwait community" />
-            </div>
-            <div className="vision-text">
-                <h2 className="vision-title">Our Vision</h2>
-                <p className="vision-description">
-                    At Wom(en) Kuwait, you will form effortless but meaningful connections. We bring ambitious and curious women together through coffee mornings, creative workshops to panel talks and late-night dinners. You can engage as much as you like or as little. More than a club, we are a sisterhood.
-                </p>
-                <Link to="/about-us" className="cta-button">
-                    Learn More
-                </Link>
-            </div>
+          <div className="vision-image">
+            <img src={visionImage} alt="A woman with pink hair, representing the vibrant Wom(en) Kuwait community" />
+          </div>
+          <div className="vision-text">
+            <h2 className="vision-title">Our Vision</h2>
+            <p className="vision-description">
+              At Wom(en) Kuwait, you will form effortless but meaningful connections. We bring ambitious and curious women together through coffee mornings, creative workshops to panel talks and late-night dinners. You can engage as much as you like or as little. More than a club, we are a sisterhood.
+            </p>
+            <Link to="/about-us" className="cta-button">
+              Learn More
+            </Link>
+          </div>
         </div>
       </section>
       <section className="collaboration-press-section">
@@ -199,29 +198,29 @@ const Home = () => {
           <div className="collaboration-content-left">
             <h2 className="collaborate-title">Let’s Uplift Women Together</h2>
             <p className="collaborate-description">
-              When businesses and communities join forces, everyone wins. By partnering with us, you’ll not only uplift women through opportunities, mentorship, and shared experiences, 
-              but also showcase your brand to an engaged and growing network. 
+              When businesses and communities join forces, everyone wins. By partnering with us, you’ll not only uplift women through opportunities, mentorship, and shared experiences,
+              but also showcase your brand to an engaged and growing network.
             </p>
             <div className="partnership-grid">
               <div className="partnership-item">
                 <h3>Sponsors</h3>
-                <p>Support our community by sponsoring wellness sessions, pop-up markets, or networking events. 
+                <p>Support our community by sponsoring wellness sessions, pop-up markets, or networking events.
                   Our high-achieving circle of women will rave about your beauty corners and curated gift bags for days.</p>
               </div>
-               <div className="partnership-item">
+              <div className="partnership-item">
                 <h3>Recruiters</h3>
-                <p>Get direct access into a network of powerful women. Share career opportunities, 
+                <p>Get direct access into a network of powerful women. Share career opportunities,
                   host skill-building workshops, and connect directly with talent ready to grow.</p>
               </div>
               <div className="partnership-item">
                 <h3>Speakers</h3>
-                <p>We want to hear from you. Bring your expertise to our stage, 
-                whether in career coaching, entrepreneurship, or personal growth. Inspire, 
-                teach, and gain visibility with a motivated audience.
+                <p>We want to hear from you. Bring your expertise to our stage,
+                  whether in career coaching, entrepreneurship, or personal growth. Inspire,
+                  teach, and gain visibility with a motivated audience.
                 </p>
               </div>
               <div className="partnership-item">
-                 <Link to="/partner" className="partner-cta-button">
+                <Link to="/partner" className="partner-cta-button">
                   Partner With Us
                 </Link>
               </div>
@@ -229,18 +228,18 @@ const Home = () => {
           </div>
           <div className="press-slider-right">
             <h3 className="press-title">In the Press</h3>
-             <div className="press-slider-wrapper">
-                <div 
-                  className="press-slider-container" 
-                  style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-                >
-                  {pressQuotes.map((item, index) => (
-                    <div className="press-slide" key={index}>
-                      <p className="press-quote">"{item.quote}"</p>
-                      <p className="press-source">{item.source}</p>
-                    </div>
-                  ))}
-                </div>
+            <div className="press-slider-wrapper">
+              <div
+                className="press-slider-container"
+                style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+              >
+                {pressQuotes.map((item, index) => (
+                  <div className="press-slide" key={index}>
+                    <p className="press-quote">"{item.quote}"</p>
+                    <p className="press-source">{item.source}</p>
+                  </div>
+                ))}
+              </div>
             </div>
             <div className="slider-nav">
               <button onClick={prevSlide} className="slider-arrow prev">&lt;</button>
@@ -248,8 +247,8 @@ const Home = () => {
             </div>
             <div className="slider-dots-container">
               {pressQuotes.map((_, index) => (
-                <button 
-                  key={index} 
+                <button
+                  key={index}
                   className={`slider-dot ${currentSlide === index ? 'active' : ''}`}
                   onClick={() => goToSlide(index)}
                 ></button>
