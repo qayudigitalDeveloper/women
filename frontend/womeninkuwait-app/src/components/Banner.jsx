@@ -2,11 +2,11 @@ import React from "react";
 import { FaLinkedin } from "react-icons/fa";
 import "../Banner.css";
 
-const Banner: React.FC = () => {
+const Banner = () => {
   return (
     <div className="top-banner">
       <span className="banner-text">
-        Join a network of inspiring women - {" "}
+        Join a network of inspiring women -{" "}
         <span className="banner-highlight">Connect. Grow. Lead.</span>
       </span>
       {/*<a
