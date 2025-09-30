@@ -91,7 +91,7 @@ const Home = () => {
           </div>
           <div className="ambition-text">
 
-            <span className="ambition-title-accent">Who are whe?</span>
+            <span className="ambition-title-accent">Who are we?</span>
 
             <p className="ambition-description">
               After two decades in Kuwait, Maimuna realized that while women have been achieving incredible things in Kuwait, there wasn’t a community where they could consistently meet.<br /><br /> Women Kuwait exists for women who crave real connection.
