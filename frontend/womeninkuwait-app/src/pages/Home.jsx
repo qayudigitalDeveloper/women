@@ -74,6 +74,7 @@ const Home = () => {
              <video
                 src={WomenKuwaitVideo}
                 controls
+                autoPlay
                 className="video-overlay"
                 style={{width: "100%"}}
               >
