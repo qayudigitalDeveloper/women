@@ -1,7 +1,6 @@
 import React, { lazy } from "react";
 import "./App.css";
 import { Routes, Route, Navigate } from "react-router-dom";
-import Home from "./pages/Home";
 import Layout from "./components/Layout";
 import AboutUs from "./pages/Aboutus";
 import Join from "./pages/Join";
