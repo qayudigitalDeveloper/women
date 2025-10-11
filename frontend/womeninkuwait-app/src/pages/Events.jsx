@@ -9,10 +9,10 @@ import digitalMarketingImage from '../assets/5.jpg';
 const upcomingEventsData = [
   {
     image: digitalMarketingImage,
-    title: 'Digital Marketing Masterclass',
-    date: 'October 12, 2025 at 6:00 PM',
-    description: 'Join us for an in-depth masterclass on the latest trends in digital marketing. This session will cover everything from SEO and content strategy to social media advertising and analytics. Perfect for entrepreneurs and marketing professionals looking to sharpen their skills.',
-    location: 'Online via Zoom',
+    title: 'Exciting event with Wom(en) Kuwait',
+    date: 'Launching this October',
+    description: 'Wom(en) Kuwait’s first event is launching this October. With this event, we will start our journey of connecting ambitious, curious women all over Kuwait. As we get closer to the launch date, we will release more information. Please keep watching this space. We don’t want you to miss out on a chance to meet the brilliant minds of Kuwait.',
+    location: 'To be determined',
   },
 ];
 
@@ -101,10 +101,10 @@ const Events = () => {
           </div>
         </section> 
 
-      {/* --- "NEXT UP" EVENT LISTING SECTION --- 
+      {/* --- "NEXT UP" EVENT LISTING SECTION --- */}
       <section className="events-list-section">
         <div className="events-list-container">
-          <h2 className="events-list-title">Next Up</h2>
+          <h2 className="events-list-title">Upcoming Events</h2>
           <div className="events-grid">
             {upcomingEventsData.map((event, index) => (
               <div 
@@ -123,7 +123,7 @@ const Events = () => {
             ))}
           </div>
         </div>
-      </section> */}
+      </section> 
       
       {/* --- PAST EVENTS SECTION --- 
       <section className="events-list-section">

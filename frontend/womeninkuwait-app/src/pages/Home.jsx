@@ -12,7 +12,7 @@ import WomenKuwaitVideo from '../assets/WomenKuwaitVideo.mp4'
 const pressQuotes = [
   {
     quote: "Our goal is to capture high-achieving, ambitious young women at the most transformative time of their lives and have a positive impact on them. If we can do that, we can change the world.",
-    source: "Syracuse University"
+    source: "Insight News"
   },
   {
     quote: "The Women's Network succeeded in bridging the gap between interdisciplinary female students and connecting them to various professional opportunities.",
@@ -75,6 +75,7 @@ const Home = () => {
              <video
                 src={WomenKuwaitVideo}
                 controls
+                autoPlay
                 className="video-overlay"
                 style={{width: "100%"}}
               >
@@ -92,7 +93,7 @@ const Home = () => {
           </div>
           <div className="ambition-text">
 
-            <span className="ambition-title-accent">Who are whe?</span>
+            <span className="ambition-title-accent">Who are we?</span>
 
             <p className="ambition-description">
               After two decades in Kuwait, Maimuna realized that while women have been achieving incredible things in Kuwait, there wasn’t a community where they could consistently meet.<br /><br /> Women Kuwait exists for women who crave real connection.

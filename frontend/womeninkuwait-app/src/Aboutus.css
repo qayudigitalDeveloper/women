@@ -667,6 +667,10 @@ body {
   .why-join-card {
     padding: 1rem;
   }
+  .value-item-title {
+    font-weight: 500;
+    font-size: 1.1rem;
+  }
 }
   
 @media (max-width: 576px) {

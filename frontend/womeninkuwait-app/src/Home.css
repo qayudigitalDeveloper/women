@@ -160,7 +160,6 @@ body {
   width: 100%;
   padding-top: 56.25%;
   background-color: #e0e0e0;
-  background-image: url('https://placehold.co/600x400/e0e0e0/ffffff?text=Our+Story');
   background-size: cover;
   background-position: center;
   border-radius: 8px;
@@ -180,6 +179,14 @@ body {
   justify-content: center;
   color: white;
   transition: background-color 0.3s ease;
+}
+.video-placeholder .background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
 }
 .video-placeholder:hover .video-overlay {
   background-color: rgba(0, 0, 0, 0.6);

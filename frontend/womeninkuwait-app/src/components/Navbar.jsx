@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import "../Nav.css";
 import { Menu, X, ChevronDown } from "lucide-react";
+import { Link } from "react-router-dom";
 
 import logo from "../assets/logo1.png";
 
@@ -45,18 +46,18 @@ export default function Navbar() {
       <div style={{ height: isSticky ? `${navHeight}px` : "auto" }} />
       <nav ref={navRef} className={isSticky ? "navbar sticky" : "navbar"}>
         <div className="nav-container">
-          <a href="/" className="logo-link">
+          <Link to="/" className="logo-link">
             <img src={logo} alt="Women in Kuwait Logo" className="logo-img" />
-          </a>
+          </Link>
           <ul className="nav-links">
-            <li><a href="/">Home</a></li>
-            <li><a href="/about-us">About </a></li>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/about-us">About </Link></li>
             <li className="dropdown-container" ref={joinDropdownRef}>
               <div
                 className="nav-link-dropdown"
                 onClick={() => setIsJoinOpen(!isJoinOpen)}
               >
-                <li><a href="/join">Register</a></li>
+                <li><Link to="/join">Register</Link></li>
                 <ChevronDown
                   size={16}
                   className={`chevron-icon ${isJoinOpen ? "open" : ""}`}
@@ -64,12 +65,12 @@ export default function Navbar() {
               </div>
               {isJoinOpen && (
                 <ul className="dropdown-menu">
-                  <li><a href="/join">Register</a></li>
-                  <li><a href="/contact">Contact</a></li>
+                  <li><Link to="/join">Register</Link></li>
+                  <li><Link to="/contact">Contact</Link></li>
                 </ul>
               )}
             </li>
-            <li><a href="/events">Events</a></li>
+            <li><Link to="/events">Events</Link></li>
           </ul>
           <div className="menu-icon" onClick={() => setIsOpen(true)}>
             <Menu size={26} />
@@ -86,16 +87,16 @@ export default function Navbar() {
               onClick={(e) => e.stopPropagation()}
             >
               <div className="side-menu-header">
-                <a href="/" className="logo-link">
+                <Link to="/" className="logo-link">
                   <img src={logo} alt="Women in Kuwait Logo" className="logo-img" />
-                </a>
+                </Link>
                 <span className="close-menu" onClick={() => setIsOpen(false)}>
                   <X size={28} />
                 </span>
               </div>
               <ul>
-                <li><a href="/" onClick={() => setIsOpen(false)}>Home</a></li>
-                <li><a href="/about-us" onClick={() => setIsOpen(false)}>About</a></li>
+                <li><Link to="/" onClick={() => setIsOpen(false)}>Home</Link></li>
+                <li><Link to ="/about-us" onClick={() => setIsOpen(false)}>About</Link></li>
                 <li className="mobile-dropdown-container">
                   <div
                     className="mobile-dropdown-toggle"
@@ -109,12 +110,12 @@ export default function Navbar() {
                   </div>
                   {isMobileJoinOpen && (
                     <ul className="mobile-dropdown-menu">
-                      <li><a href="/join" onClick={() => setIsOpen(false)}>Register</a></li>
-                      <li><a href="/contact" onClick={() => setIsOpen(false)}>Contact</a></li>
+                      <li><Link to="/join" onClick={() => setIsOpen(false)}>Register</Link></li>
+                      <li><Link to="/contact" onClick={() => setIsOpen(false)}>Contact</Link></li>
                     </ul>
                   )}
                 </li>
-                <li><a href="/events" onClick={() => setIsOpen(false)}>Events</a></li>
+                <li><Link to="/events" onClick={() => setIsOpen(false)}>Events</Link></li>
               </ul>
             </div>
           </div>
