@@ -1,12 +1,10 @@
-import React, { useState } from 'react';
-import '../Events.css'; 
+import React, { useState } from "react";
+import "../Events.css";
 
-import eventsHeroImage from '../assets/6.png';
-import joinSectionImage from '../assets/3.jpg';
+import eventsHeroImage from "../assets/6.png";
+import joinSectionImage from "../assets/3.jpg";
 // import digitalMarketingImage from '../assets/5.jpg';
-import coffee_and_connect from '../assets/coffee-and-connect-event.jpg';
-
-
+import coffee_and_connect from "../assets/coffee-and-connect-event.jpg";
 
 const upcomingEventsData = [
   // {
@@ -18,10 +16,16 @@ const upcomingEventsData = [
   // },
   {
     image: coffee_and_connect,
-    title: 'Coffee and Connect Event',
-    date: 'Coming up this November',
-    description: "Join us for an afternoon dedicated to genuine connection. This isn't just about coffee; it's an activity designed to foster warm conversations and build community in a relaxed and welcoming environment. Start your day by networking with like-minded women and enjoying the warmth of good company.",
-    location: 'To be determined',
+    title: "Coffee and Connect Event",
+    description:
+      "Join us for an afternoon dedicated to genuine connection. This isn't just about coffee; it's an activity designed to foster warm conversations and build community in a relaxed and welcoming environment. Start your day by networking with like-minded women and enjoying the warmth of good company.",
+
+    location: "Espresso cafe, Salmiya",
+    date: "15th November",
+    time: "04:30",
+    Kuwait_dinar: " 8 KD includes the Coffee, Art supplies ",
+    Activity:
+      "painting and networking and understand one of the business keep point of view",
   },
   // {
   //   image: coffee_and_connect,
@@ -61,24 +65,23 @@ const upcomingEventsData = [
 ];
 
 const whyJoinData = [
-    {
-        title: 'Online Events',
-        text: 'Attend live webinars from experts, 80 minutes co-working hours, or skill swap where you share your skills with each other. Or you can just log in with a cup of coffee and chat with your new friends. ',
-    },
-    {
-        title: 'Offline Events',
-        text: 'Dress up to the nine for red carpet dinner, visit our collaborator’s pop-up market, or attend vision board parties. We’re continuously coming up with new concepts to keep you entertained.',
-    },
-    {
-        title: 'Volunteer',
-        text: 'We love to see women take the lead. If you think you would like to host any of the events or contribute in some other ways, drop us an email. ',
-    },
-    {
-        title: 'Mentorship',
-        text: 'Find mentors invested in your personal growth. Connect with them directly through our website or meet them at our specialized career-based events. ',
-    },
+  {
+    title: "Online Events",
+    text: "Attend live webinars from experts, 80 minutes co-working hours, or skill swap where you share your skills with each other. Or you can just log in with a cup of coffee and chat with your new friends. ",
+  },
+  {
+    title: "Offline Events",
+    text: "Dress up to the nine for red carpet dinner, visit our collaborator’s pop-up market, or attend vision board parties. We’re continuously coming up with new concepts to keep you entertained.",
+  },
+  {
+    title: "Volunteer",
+    text: "We love to see women take the lead. If you think you would like to host any of the events or contribute in some other ways, drop us an email. ",
+  },
+  {
+    title: "Mentorship",
+    text: "Find mentors invested in your personal growth. Connect with them directly through our website or meet them at our specialized career-based events. ",
+  },
 ];
-
 
 const EventDetailModal = ({ event, onClose }) => {
   if (!event) return null;
@@ -86,15 +89,47 @@ const EventDetailModal = ({ event, onClose }) => {
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-        <button className="modal-close-btn" onClick={onClose}>&times;</button>
+        <button className="modal-close-btn" onClick={onClose}>
+          &times;
+        </button>
+
         <img src={event.image} alt={event.title} className="modal-image" />
+
         <div className="modal-text-content">
           <h2 className="modal-title">{event.title}</h2>
-          <p className="modal-date">{event.date}</p>
+          <p className="modal-date">
+            {event.date} <span>• {event.time} PM</span>
+          </p>
+
           <p className="modal-description">{event.description}</p>
-          <div className="modal-location">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-            <span>{event.location}</span>
+
+          <div className="modal-info-box">
+            <div className="modal-location">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <span>{event.location}</span>
+            </div>
+
+            <div className="modal-activity">
+              <h4>Activity Includes:</h4>
+              <p>{event.Activity}</p>
+            </div>
+
+            <div className="modal-price">
+              <strong>Entry Fee:</strong> {event.Kuwait_dinar}
+            </div>
           </div>
         </div>
       </div>
@@ -103,47 +138,50 @@ const EventDetailModal = ({ event, onClose }) => {
 };
 
 
-
 const Events = () => {
   const [selectedEvent, setSelectedEvent] = useState(null);
 
   return (
     <div className="events-page">
       {/* --- HERO SECTION --- */}
-        <section 
-          className="events-hero-section"
-          style={{ backgroundImage: `url(${eventsHeroImage})` }}
-        >
-          <div className="events-hero-overlay"></div>
-          <div className="events-hero-content">
-            <h1 className="events-hero-title">Upcoming Events</h1>
-            <p className="events-hero-description">
-              Take part in exclusive events that connect our members with
-              Kuwait's industry leaders, professional development resources, and
-              transformative career opportunities.
-            </p>
-          </div>
-        </section>
+      <section
+        className="events-hero-section"
+        style={{ backgroundImage: `url(${eventsHeroImage})` }}
+      >
+        <div className="events-hero-overlay"></div>
+        <div className="events-hero-content">
+          <h1 className="events-hero-title">Upcoming Events</h1>
+          <p className="events-hero-description">
+            Take part in exclusive events that connect our members with Kuwait's
+            industry leaders, professional development resources, and
+            transformative career opportunities.
+          </p>
+        </div>
+      </section>
 
       {/* --- WHY JOIN SECTION --- */}
-        <section className="why-join-section">
-          <div className="why-join-container">
-            <div className="why-join-image-wrapper">
-              <img src={joinSectionImage} alt="A member of Women Kuwait smiling" className="why-join-image" />
-            </div>
-            <div className="why-join-content">
-              <h2 className="why-join-title">Events to Join</h2>
-              <div className="why-join-grid">
-                {whyJoinData.map((card, index) => (
-                  <div className="why-join-card" key={index}>
-                    <h3>{card.title}</h3>
-                    <p>{card.text}</p>
-                  </div>
-                ))}
-              </div>
+      <section className="why-join-section">
+        <div className="why-join-container">
+          <div className="why-join-image-wrapper">
+            <img
+              src={joinSectionImage}
+              alt="A member of Women Kuwait smiling"
+              className="why-join-image"
+            />
+          </div>
+          <div className="why-join-content">
+            <h2 className="why-join-title">Events to Join</h2>
+            <div className="why-join-grid">
+              {whyJoinData.map((card, index) => (
+                <div className="why-join-card" key={index}>
+                  <h3>{card.title}</h3>
+                  <p>{card.text}</p>
+                </div>
+              ))}
             </div>
           </div>
-        </section> 
+        </div>
+      </section>
 
       {/* --- "NEXT UP" EVENT LISTING SECTION --- */}
       <section className="events-list-section">
@@ -151,24 +189,28 @@ const Events = () => {
           <h2 className="events-list-title">Upcoming Events</h2>
           <div className="events-grid">
             {upcomingEventsData.map((event, index) => (
-              <div 
-                className="event-card upcoming" 
+              <div
+                className="event-card upcoming"
                 key={index}
                 onClick={() => setSelectedEvent(event)} // Added onClick here
               >
                 <div className="event-card-image-container">
-                  <img src={event.image} alt={event.title} className="event-card-image" />
+                  <img
+                    src={event.image}
+                    alt={event.title}
+                    className="event-card-image"
+                  />
                 </div>
                 <div className="event-card-content">
                   <h3 className="event-card-title">{event.title}</h3>
-                  <p className="event-card-date">{event.date}</p>
+                  <p className="event-card-date">{event.date}<span>, {event?.time}</span> </p>
                 </div>
               </div>
             ))}
           </div>
         </div>
-      </section> 
-      
+      </section>
+
       {/* --- PAST EVENTS SECTION --- 
       <section className="events-list-section">
         <div className="events-list-container">
@@ -190,10 +232,12 @@ const Events = () => {
       </section> */}
 
       {/* --- RENDER THE MODAL --- */}
-      <EventDetailModal event={selectedEvent} onClose={() => setSelectedEvent(null)} />
+      <EventDetailModal
+        event={selectedEvent}
+        onClose={() => setSelectedEvent(null)}
+      />
     </div>
   );
 };
 
 export default Events;
-
