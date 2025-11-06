@@ -18,7 +18,7 @@ const eventsData = [
       { src: event1_img1, caption: "Guests enjoying their coffee art" },
       { src: event1_img2, caption: "Art table setup at Espresso Cafe" },
       { src: event1_img3, caption: "Art table setup at Espresso Cafe" },
-      { src: event1_img4, caption: "Art table setup at Espresso Cafe" },
+      { src: event1_img4, caption: "Art table " },
     ],
   },
   
