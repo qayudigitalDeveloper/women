@@ -5,8 +5,8 @@ import event1_img1 from "../assets/event1/img1.png";
 import event1_img2 from "../assets/event1/img2.jpg";
 import event1_img3 from "../assets/event1/img3.jpg";
 import event1_img4 from "../assets/event1/img4.jpeg";
-
-
+import event1_vid1 from "../assets/event1/vid1.mp4";
+import event1_vid2 from "../assets/event1/vid2.mp4";
 
 const eventsData = [
   {
@@ -14,41 +14,50 @@ const eventsData = [
     name: "Launch Event",
     description:
       "A cozy networking event where women connect over art and coffee.",
-    images: [
-      { src: event1_img1, caption: "Guests enjoying their coffee art" },
-      { src: event1_img2, caption: "Art table setup at Espresso Cafe" },
-      { src: event1_img3, caption: "Art table setup at Espresso Cafe" },
-      { src: event1_img4, caption: "Art table " },
-    ],
+    images: [event1_img1, event1_img2, event1_img3, event1_img4],
+    videos: [event1_vid1, event1_vid2],
   },
-  
 ];
 
 const Gallery = () => {
   const [selectedEvent, setSelectedEvent] = useState("All");
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedMedia, setSelectedMedia] = useState(null); // handle both images & videos
 
-  // Get unique event names for filter buttons
   const uniqueEventNames = [...new Set(eventsData.map((event) => event.name))];
 
-  const filteredImages =
+  // Combine images & videos for each event
+  const filteredMedia =
     selectedEvent === "All"
-      ? eventsData.flatMap((event) =>
-          event.images.map((img) => ({
-            ...img,
+      ? eventsData.flatMap((event) => [
+          ...event.images.map((img) => ({
+            type: "image",
+            src: img,
             eventName: event.name,
             eventDesc: event.description,
-          }))
-        )
+          })),
+          ...(event.videos?.map((vid) => ({
+            type: "video",
+            src: vid,
+            eventName: event.name,
+            eventDesc: event.description,
+          })) || []),
+        ])
       : eventsData
           .filter((event) => event.name === selectedEvent)
-          .flatMap((event) =>
-            event.images.map((img) => ({
-              ...img,
-              eventName: selectedEvent,
+          .flatMap((event) => [
+            ...event.images.map((img) => ({
+              type: "image",
+              src: img,
+              eventName: event.name,
               eventDesc: event.description,
-            }))
-          );
+            })),
+            ...(event.videos?.map((vid) => ({
+              type: "video",
+              src: vid,
+              eventName: event.name,
+              eventDesc: event.description,
+            })) || []),
+          ]);
 
   return (
     <div className="gallery-page">
@@ -90,33 +99,42 @@ const Gallery = () => {
 
       {/* GALLERY GRID */}
       <div className="gallery-grid">
-        {filteredImages.map((img, index) => (
+        {filteredMedia.map((media, index) => (
           <div
             key={index}
             className="gallery-item"
-            onClick={() => setSelectedImage(img)}
+            onClick={() => setSelectedMedia(media)}
           >
-            <img src={img.src} alt={img.caption} />
-            {/* <div className="gallery-info"> */}
-              {/* <h4>{img.eventName}</h4> */}
-              {/* <p>{img.caption}</p> */}
-            {/* </div> */}
+            {media.type === "image" ? (
+              <img src={media.src} alt={media.eventName} />
+            ) : (
+              <video src={media.src} muted loop playsInline />
+            )}
           </div>
         ))}
       </div>
 
       {/* MODAL */}
-      {selectedImage && (
-        <div className="image-modal" onClick={() => setSelectedImage(null)}>
+      {selectedMedia && (
+        <div className="image-modal" onClick={() => setSelectedMedia(null)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="close-btn" onClick={() => setSelectedImage(null)}>
+            <button className="close-btn" onClick={() => setSelectedMedia(null)}>
               &times;
             </button>
-            <img src={selectedImage.src} alt={selectedImage.caption} />
+
+            {selectedMedia.type === "image" ? (
+              <img src={selectedMedia.src} alt={selectedMedia.eventName}  />
+            ) : (
+              <video
+                src={selectedMedia.src}
+                controls
+                autoPlay
+                style={{ width: "300px", borderRadius: "10px" }}
+              />
+            )}
+
             <div className="modal-text">
-              <h2>{selectedImage.eventName}</h2>
-              {/* <p>{selectedImage.eventDesc}</p> */}
-              {/* <span>{selectedImage.caption}</span> */}
+              <h2>{selectedMedia.eventName}</h2>
             </div>
           </div>
         </div>
