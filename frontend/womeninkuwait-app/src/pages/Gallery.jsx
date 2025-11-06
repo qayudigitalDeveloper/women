@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import "../Gallery.css";
 import hero from "../assets/1.png";
-import event1_img1 from "../assets/event1/event1_img1.png";
-import event1_img2 from "../assets/event1/event1_img2.jpg";
-import event1_img3 from "../assets/event1/event1_img3.jpg";
-import event1_img4 from "../assets/event1/event1_img4.jpeg";
-
-
+import event1_img1 from "../assets/event1/event1_img1.PNG";
+import event1_img2 from "../assets/event1/event1_img2.JPG";
+import event1_img3 from "../assets/event1/event1_img3.JPG";
+import event1_img4 from "../assets/event1/event1_img4.JPEG";
 
 const eventsData = [
   {
@@ -14,14 +12,8 @@ const eventsData = [
     name: "Launch Event",
     description:
       "A cozy networking event where women connect over art and coffee.",
-    images: [
-      { src: event1_img1, caption: "Guests enjoying their coffee art" },
-      { src: event1_img2, caption: "Art table setup at Espresso Cafe" },
-      { src: event1_img3, caption: "Art table setup at Espresso Cafe" },
-      { src: event1_img4, caption: "Art table setup at Espresso Cafe" },
-    ],
+    images: [event1_img1, event1_img2, event1_img3, event1_img4],
   },
-  
 ];
 
 const Gallery = () => {
@@ -31,11 +23,12 @@ const Gallery = () => {
   // Get unique event names for filter buttons
   const uniqueEventNames = [...new Set(eventsData.map((event) => event.name))];
 
+  // Filtered images logic
   const filteredImages =
     selectedEvent === "All"
       ? eventsData.flatMap((event) =>
           event.images.map((img) => ({
-            ...img,
+            src: img,
             eventName: event.name,
             eventDesc: event.description,
           }))
@@ -44,8 +37,8 @@ const Gallery = () => {
           .filter((event) => event.name === selectedEvent)
           .flatMap((event) =>
             event.images.map((img) => ({
-              ...img,
-              eventName: selectedEvent,
+              src: img,
+              eventName: event.name,
               eventDesc: event.description,
             }))
           );
@@ -59,7 +52,7 @@ const Gallery = () => {
       >
         <div className="events-hero-overlay"></div>
         <div className="events-hero-content">
-          <h1 className="events-hero-title">Events Memories</h1>
+          <h1 className="events-hero-title">Event Memories</h1>
           <p className="events-hero-description">
             Relive our most memorable events that brought together inspiring
             leaders, innovative thinkers, and a vibrant community of
@@ -96,11 +89,7 @@ const Gallery = () => {
             className="gallery-item"
             onClick={() => setSelectedImage(img)}
           >
-            <img src={img.src} alt={img.caption} />
-            {/* <div className="gallery-info"> */}
-              {/* <h4>{img.eventName}</h4> */}
-              {/* <p>{img.caption}</p> */}
-            {/* </div> */}
+            <img src={img.src} alt={img.eventName} />
           </div>
         ))}
       </div>
@@ -112,11 +101,10 @@ const Gallery = () => {
             <button className="close-btn" onClick={() => setSelectedImage(null)}>
               &times;
             </button>
-            <img src={selectedImage.src} alt={selectedImage.caption} />
+            <img src={selectedImage.src} alt={selectedImage.eventName} />
             <div className="modal-text">
               <h2>{selectedImage.eventName}</h2>
               {/* <p>{selectedImage.eventDesc}</p> */}
-              {/* <span>{selectedImage.caption}</span> */}
             </div>
           </div>
         </div>
