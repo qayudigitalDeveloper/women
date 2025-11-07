@@ -7,6 +7,7 @@ import event1_img3 from "../assets/event1/img3.jpg";
 import event1_img4 from "../assets/event1/img4.jpeg";
 import event1_vid1 from "../assets/event1/vid1.mp4";
 import event1_vid2 from "../assets/event1/vid2.mp4";
+import { FaPlayCircle } from "react-icons/fa"; // 👈 Import play icon
 
 const eventsData = [
   {
@@ -21,11 +22,10 @@ const eventsData = [
 
 const Gallery = () => {
   const [selectedEvent, setSelectedEvent] = useState("All");
-  const [selectedMedia, setSelectedMedia] = useState(null); // handle both images & videos
+  const [selectedMedia, setSelectedMedia] = useState(null);
 
   const uniqueEventNames = [...new Set(eventsData.map((event) => event.name))];
 
-  // Combine images & videos for each event
   const filteredMedia =
     selectedEvent === "All"
       ? eventsData.flatMap((event) => [
@@ -110,6 +110,13 @@ const Gallery = () => {
             ) : (
               <video src={media.src} muted loop playsInline />
             )}
+
+            {/* Play Icon for Videos Only */}
+            {media.type === "video" && (
+              <div className="play-icon-overlay">
+                <FaPlayCircle className="play-icon" />
+              </div>
+            )}
           </div>
         ))}
       </div>
@@ -123,7 +130,7 @@ const Gallery = () => {
             </button>
 
             {selectedMedia.type === "image" ? (
-              <img src={selectedMedia.src} alt={selectedMedia.eventName}  />
+              <img src={selectedMedia.src} alt={selectedMedia.eventName} />
             ) : (
               <video
                 src={selectedMedia.src}
