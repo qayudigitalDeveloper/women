@@ -30,8 +30,6 @@ export default function App() {
         <Route path="/terms" element={<Terms />} />
         <Route path="/partner" element={<Partner />} />
         <Route path="/contact" element={<Contactus />} />
-        
-        
       </Route>
     </Routes>
   );

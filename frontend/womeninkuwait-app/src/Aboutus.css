@@ -224,12 +224,12 @@ body {
 
 
 /* --- VISION SECTION --- */
-.vision-section {
+.aboutus-vision-section  {
   padding: 3rem 2rem;
   background: linear-gradient(135deg, var(--brand-light-peach) 0%, #ffebf5 100%);
 }
 
-.vision-content {
+.aboutus-vision-content {
   display: flex;
   gap: 4rem;
   max-width: 980px;

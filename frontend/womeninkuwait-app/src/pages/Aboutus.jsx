@@ -109,8 +109,8 @@ export default function AboutUs() {
       </section>
 
       {/* --- WOMAN BEHIND THE VISION SECTION --- */}
-      <section className="vision-section">
-        <div className="vision-content">
+      <section className="aboutus-vision-section">
+        <div className="aboutus-vision-content">
           <div className="vision-text-content">
             <h2 className="vision-title">Woman Behind the Vision</h2>
             <p className="founder-bio">
